@@ -35,7 +35,10 @@ private static final String PASSWORD = "sua_senha_mysql";
 No diretório `projeto-backend`, execute:
 
 ```bash
-javac App.java
+javac -cp "../lib/*" -d ../bin *.java api/*.java dao/*.java model/*.java util/*.java
+
+cd ../bin
+java -cp "../lib/*;." App
 ```
 
 ## Instalação e Configuração do Frontend
