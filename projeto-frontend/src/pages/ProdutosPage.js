@@ -207,15 +207,37 @@ const ProdutosPage = () => {
           </h3>
           <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-end' }}>
             <div style={{ flex: 1 }}>
-              <Select
-                label=""
+              <label style={{ 
+                display: 'block', 
+                marginBottom: '6px', 
+                fontSize: '14px', 
+                fontWeight: '500', 
+                color: '#374151' 
+              }}>
+                Selecione uma categoria
+              </label>
+              <select
                 value={filtroCategoria}
                 onChange={handleFiltroChange}
-                options={categorias.map(cat => ({
-                  value: cat.id,
-                  label: cat.nome
-                }))}
-              />
+                style={{
+                  width: '100%',
+                  padding: '10px 12px',
+                  border: '1px solid #d1d5db',
+                  borderRadius: '6px',
+                  fontSize: '14px',
+                  outline: 'none',
+                  backgroundColor: 'white',
+                  cursor: 'pointer',
+                  boxSizing: 'border-box'
+                }}
+              >
+                <option value="">Todas as categorias</option>
+                {categorias.map(cat => (
+                  <option key={cat.id} value={cat.id}>
+                    {cat.nome}
+                  </option>
+                ))}
+              </select>
             </div>
             <Button 
               onClick={() => {
@@ -223,7 +245,6 @@ const ProdutosPage = () => {
                 carregarProdutos();
               }}
               variant="secondary"
-              style={{ marginBottom: 0 }}
             >
               Limpar Filtro
             </Button>
