@@ -1,0 +1,64 @@
+# App Front Produtos - Documentação
+
+**Alunos:** Rafael Olegario e Otávio Temóteo
+
+---
+
+## 🔧 Instalação e Configuração do Backend
+
+### 1. Criar o Banco de Dados
+
+Abra o **MySQL Workbench** ou linha de comando do MySQL:
+
+```bash
+mysql -u root -p
+```
+
+Copie e execute o conteúdo do arquivo `database.sql`:
+
+```sql
+-- Copiar todo conteúdo de projeto-backend/database.sql e executar
+```
+
+### 2. Configurar Conexão com Banco de Dados
+
+Abra o arquivo `src/util/ConnectionFactory.java` e configure:
+
+```java
+private static final String URL = "jdbc:mysql://localhost:3306/app_produtos";
+private static final String USER = "root";
+private static final String PASSWORD = "sua_senha_mysql";
+```
+
+### 3. Rodar o Backend Localmente
+
+No diretório `projeto-backend`, execute:
+
+```bash
+javac App.java
+```
+
+## Instalação e Configuração do Frontend
+
+* Em um terminal separado/dedicado dentro do diretorio frontEnd execute o comando:
+
+```bash
+npm install
+```
+
+### 2. Configurar URLs da API
+
+```javascript
+const API_URL = "http://localhost:8080/"; (já esta padrão)
+```
+
+### 3. Rodar o Frontend Localmente
+
+```bash
+npm start
+```
+
+### PROJETO RODANDO
+
+
+
