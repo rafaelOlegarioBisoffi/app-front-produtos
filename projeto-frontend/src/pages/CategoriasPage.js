@@ -13,8 +13,7 @@ const CategoriasPage = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingCategoria, setEditingCategoria] = useState(null);
   const [formData, setFormData] = useState({
-    nome: '',
-    descricao: ''
+    nome: ''
   });
 
   useEffect(() => {
@@ -75,8 +74,7 @@ const CategoriasPage = () => {
   const handleEdit = (categoria) => {
     setEditingCategoria(categoria);
     setFormData({
-      nome: categoria.nome,
-      descricao: categoria.descricao || ''
+      nome: categoria.nome
     });
     setModalOpen(true);
   };
@@ -108,20 +106,19 @@ const CategoriasPage = () => {
 
   const abrirModalNovo = () => {
     setEditingCategoria(null);
-    setFormData({ nome: '', descricao: '' });
+    setFormData({ nome: '' });
     setModalOpen(true);
   };
 
   const fecharModal = () => {
     setModalOpen(false);
     setEditingCategoria(null);
-    setFormData({ nome: '', descricao: '' });
+    setFormData({ nome: '' });
   };
 
   const columns = [
     { header: 'ID', accessor: 'id' },
-    { header: 'Nome', accessor: 'nome' },
-    { header: 'Descrição', accessor: 'descricao' }
+    { header: 'Nome', accessor: 'nome' }
   ];
 
   return (
@@ -167,13 +164,6 @@ const CategoriasPage = () => {
             value={formData.nome}
             onChange={handleInputChange}
             required
-          />
-          
-          <Input
-            label="Descrição"
-            name="descricao"
-            value={formData.descricao}
-            onChange={handleInputChange}
           />
 
           <div style={{ display: 'flex', gap: '12px', marginTop: '24px' }}>

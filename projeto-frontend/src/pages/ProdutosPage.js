@@ -16,8 +16,8 @@ const ProdutosPage = () => {
   const [editingProduto, setEditingProduto] = useState(null);
   const [formData, setFormData] = useState({
     nome: '',
-    descricao: '',
     preco: '',
+    estoque: '',
     categoriaId: ''
   });
 
@@ -61,8 +61,8 @@ const ProdutosPage = () => {
 
     const payload = {
       nome: formData.nome,
-      descricao: formData.descricao,
       preco: parseFloat(formData.preco),
+      estoque: parseInt(formData.estoque),
       categoriaId: parseInt(formData.categoriaId)
     };
 
@@ -98,8 +98,8 @@ const ProdutosPage = () => {
     setEditingProduto(produto);
     setFormData({
       nome: produto.nome,
-      descricao: produto.descricao || '',
       preco: produto.preco.toString(),
+      estoque: produto.estoque.toString(),
       categoriaId: produto.categoriaId.toString()
     });
     setModalOpen(true);
@@ -132,24 +132,24 @@ const ProdutosPage = () => {
 
   const abrirModalNovo = () => {
     setEditingProduto(null);
-    setFormData({ nome: '', descricao: '', preco: '', categoriaId: '' });
+    setFormData({ nome: '', preco: '', estoque: '', categoriaId: '' });
     setModalOpen(true);
   };
 
   const fecharModal = () => {
     setModalOpen(false);
     setEditingProduto(null);
-    setFormData({ nome: '', descricao: '', preco: '', categoriaId: '' });
+    setFormData({ nome: '', preco: '', estoque: '', categoriaId: '' });
   };
 
   const columns = [
     { header: 'ID', accessor: 'id' },
     { header: 'Nome', accessor: 'nome' },
-    { header: 'Descrição', accessor: 'descricao' },
     { 
       header: 'Preço', 
       render: (row) => `R$ ${row.preco.toFixed(2)}`
     },
+    { header: 'Estoque', accessor: 'estoque' },
     { 
       header: 'Categoria', 
       render: (row) => {
@@ -205,18 +205,20 @@ const ProdutosPage = () => {
           />
           
           <Input
-            label="Descrição"
-            name="descricao"
-            value={formData.descricao}
-            onChange={handleInputChange}
-          />
-          
-          <Input
             label="Preço"
             name="preco"
             type="number"
             step="0.01"
             value={formData.preco}
+            onChange={handleInputChange}
+            required
+          />
+          
+          <Input
+            label="Estoque"
+            name="estoque"
+            type="number"
+            value={formData.estoque}
             onChange={handleInputChange}
             required
           />
