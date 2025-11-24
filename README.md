@@ -49,12 +49,6 @@ java -cp "../lib/*;." App
 npm install
 ```
 
-###  1. Configurar URLs da API
-
-```javascript
-const API_URL = "http://localhost:8080/"; (já esta padrão)
-```
-
 ### 2. Rodar o Frontend Localmente
 
 ```bash
