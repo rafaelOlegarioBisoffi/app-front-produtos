@@ -32,7 +32,7 @@ private static final String PASSWORD = "sua_senha_mysql";
 
 ### 3. Rodar o Backend Localmente
 
-No diretório `projeto-backend`, execute:
+No diretório `projeto-backend/src`, execute:
 
 ```bash
 javac -cp "../lib/*" -d ../bin *.java api/*.java dao/*.java model/*.java util/*.java
@@ -49,15 +49,16 @@ java -cp "../lib/*;." App
 npm install
 ```
 
-### 2. Configurar URLs da API
+###  1. Configurar URLs da API
 
 ```javascript
 const API_URL = "http://localhost:8080/"; (já esta padrão)
 ```
 
-### 3. Rodar o Frontend Localmente
+### 2. Rodar o Frontend Localmente
 
 ```bash
+npm run build
 npm start
 ```
 
