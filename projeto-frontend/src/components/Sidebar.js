@@ -2,8 +2,8 @@ import React from 'react';
 
 const Sidebar = ({ currentPage, onNavigate }) => {
   const menuItems = [
-    { id: 'produtos', label: 'Produtos', icon: '📦' },
-    { id: 'categorias', label: 'Categorias', icon: '📁' }
+    { id: 'produtos', label: 'Produtos'},
+    { id: 'categorias', label: 'Categorias'}
   ];
 
   return (
@@ -52,7 +52,7 @@ const Sidebar = ({ currentPage, onNavigate }) => {
               }
             }}
           >
-            <span style={{ fontSize: '20px' }}>{item.icon}</span>
+            <span style={{ fontSize: '20px' }}></span>
             <span>{item.label}</span>
           </div>
         ))}
