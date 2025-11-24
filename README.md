@@ -1,6 +1,6 @@
 # App Front Produtos - Documentação
 
-**Alunos:** Rafael Olegario e Otávio Temóteo
+**Alunos:** Rafael Olegario Bisoffi e Otávio Fernandes Temóteo
 
 ---
 
