@@ -14,6 +14,7 @@ const ProdutosPage = () => {
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingProduto, setEditingProduto] = useState(null);
+  const [filtroCategoria, setFiltroCategoria] = useState('');
   const [formData, setFormData] = useState({
     nome: '',
     preco: '',
@@ -47,6 +48,20 @@ const ProdutosPage = () => {
       setCategorias(data);
     } catch (error) {
       console.error('Erro ao carregar categorias:', error);
+    }
+  };
+
+  const carregarProdutosPorCategoria = async (categoriaId) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${API_URL}/categorias/${categoriaId}/produtos`);
+      const data = await response.json();
+      setProdutos(data);
+    } catch (error) {
+      console.error('Erro ao carregar produtos da categoria:', error);
+      alert('Erro ao carregar produtos da categoria');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -142,6 +157,22 @@ const ProdutosPage = () => {
     setFormData({ nome: '', preco: '', estoque: '', categoriaId: '' });
   };
 
+  // Filtrar produtos por categoria
+  const produtosFiltrados = filtroCategoria 
+    ? produtos.filter(p => p.categoriaId === parseInt(filtroCategoria))
+    : produtos;
+
+  const handleFiltroChange = (e) => {
+    const categoriaId = e.target.value;
+    setFiltroCategoria(categoriaId);
+    
+    if (categoriaId) {
+      carregarProdutosPorCategoria(categoriaId);
+    } else {
+      carregarProdutos();
+    }
+  };
+
   const columns = [
     { header: 'ID', accessor: 'id' },
     { header: 'Nome', accessor: 'nome' },
@@ -176,6 +207,40 @@ const ProdutosPage = () => {
       </div>
 
       <Card>
+        <div style={{ marginBottom: '24px' }}>
+          <h3 style={{ marginBottom: '12px', fontSize: '16px', fontWeight: '600', color: '#374151' }}>
+            🔍 Filtrar por Categoria
+          </h3>
+          <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-end' }}>
+            <div style={{ flex: 1 }}>
+              <Select
+                label=""
+                value={filtroCategoria}
+                onChange={handleFiltroChange}
+                options={categorias.map(cat => ({
+                  value: cat.id,
+                  label: cat.nome
+                }))}
+              />
+            </div>
+            <Button 
+              onClick={() => {
+                setFiltroCategoria('');
+                carregarProdutos();
+              }}
+              variant="secondary"
+              style={{ marginBottom: 0 }}
+            >
+              Limpar Filtro
+            </Button>
+          </div>
+          {filtroCategoria && (
+            <p style={{ marginTop: '12px', fontSize: '14px', color: '#6b7280' }}>
+              Mostrando {produtosFiltrados.length} produto(s) da categoria selecionada
+            </p>
+          )}
+        </div>
+
         {loading ? (
           <div style={{ textAlign: 'center', padding: '40px', color: '#6b7280' }}>
             Carregando...
@@ -183,7 +248,7 @@ const ProdutosPage = () => {
         ) : (
           <Table
             columns={columns}
-            data={produtos}
+            data={produtosFiltrados}
             onEdit={handleEdit}
             onDelete={handleDelete}
           />
