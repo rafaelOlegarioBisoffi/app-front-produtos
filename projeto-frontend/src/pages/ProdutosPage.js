@@ -35,7 +35,7 @@ const ProdutosPage = () => {
       setProdutos(data);
     } catch (error) {
       console.error('Erro ao carregar produtos:', error);
-      alert('Erro ao carregar produtos');
+
     } finally {
       setLoading(false);
     }
@@ -95,15 +95,12 @@ const ProdutosPage = () => {
       });
 
       if (response.ok) {
-        alert(editingProduto ? 'Produto atualizado com sucesso!' : 'Produto criado com sucesso!');
         fecharModal();
         carregarProdutos();
       } else {
-        alert('Erro ao salvar produto');
       }
     } catch (error) {
       console.error('Erro ao salvar produto:', error);
-      alert('Erro ao salvar produto');
     } finally {
       setLoading(false);
     }
@@ -132,14 +129,11 @@ const ProdutosPage = () => {
       });
 
       if (response.ok) {
-        alert('Produto excluído com sucesso!');
         carregarProdutos();
       } else {
-        alert('Erro ao excluir produto');
       }
     } catch (error) {
       console.error('Erro ao excluir produto:', error);
-      alert('Erro ao excluir produto');
     } finally {
       setLoading(false);
     }

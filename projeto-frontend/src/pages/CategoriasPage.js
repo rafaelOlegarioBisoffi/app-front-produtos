@@ -28,7 +28,6 @@ const CategoriasPage = () => {
       setCategorias(data);
     } catch (error) {
       console.error('Erro ao carregar categorias:', error);
-      alert('Erro ao carregar categorias');
     } finally {
       setLoading(false);
     }
@@ -57,15 +56,12 @@ const CategoriasPage = () => {
       });
 
       if (response.ok) {
-        alert(editingCategoria ? 'Categoria atualizada com sucesso!' : 'Categoria criada com sucesso!');
         fecharModal();
         carregarCategorias();
       } else {
-        alert('Erro ao salvar categoria');
       }
     } catch (error) {
       console.error('Erro ao salvar categoria:', error);
-      alert('Erro ao salvar categoria');
     } finally {
       setLoading(false);
     }
@@ -91,14 +87,11 @@ const CategoriasPage = () => {
       });
 
       if (response.ok) {
-        alert('Categoria excluída com sucesso!');
         carregarCategorias();
       } else {
-        alert('Erro ao excluir categoria');
       }
     } catch (error) {
       console.error('Erro ao excluir categoria:', error);
-      alert('Erro ao excluir categoria');
     } finally {
       setLoading(false);
     }
