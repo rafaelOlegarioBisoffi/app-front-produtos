@@ -3,6 +3,8 @@ import java.util.List;
 import api.ApiCategoria;
 import api.ApiProduto;
 import static spark.Spark.port;
+import static spark.Spark.options;
+import static spark.Spark.before;
 import util.ConnectionFactory;
 
 public class App {
