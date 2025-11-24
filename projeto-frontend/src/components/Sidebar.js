@@ -21,7 +21,7 @@ const Sidebar = ({ currentPage, onNavigate }) => {
         paddingBottom: '20px',
         borderBottom: '1px solid #374151'
       }}>
-        📊 Sistema
+        Gestão de Produtos
       </div>
       
       <nav>
