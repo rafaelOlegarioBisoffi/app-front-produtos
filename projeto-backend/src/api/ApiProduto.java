@@ -27,10 +27,7 @@ public class ApiProduto {
     // constante para garantir que as respostas sejam JSON
     private static final String APPLICATION_JSON = "application/json";
 
-    public static void main(String[] args) {
-        // configura a porta do serviço
-        port(8080);
-
+    public static void Execute() {
         // filtro para definir o tipo de conteúdo como JSON
         after(new Filter() {
             @Override
